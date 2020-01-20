@@ -7,31 +7,15 @@ using UnityEngine;
 
 namespace Assets.Sources
 {
-    public class SklBoneExtra0
-    {
-        public int BoneId { get; set; }
-        public int BoneHash { get; set; }
-
-        public SklBoneExtra0(BinaryReader reader)
-        {
-            this.BoneId = reader.ReadInt32();
-            this.BoneHash = reader.ReadInt32();
-        }
-    }
-    public class SklBoneData0
+    
+    public class SklBoneData0 : SklBaseBoneData
     {
         public short Zero { get; set; }
-        public short Id { get; set; }
-        public short Parent { get; set; }
+
         public short UnField { get; set; }
-        public int Hash { get; set; }
         public float TwoPointOne { get; set; }
-        public Vector3 Position;
-        public Vector3 Scale;
-        public Quaternion Quaternion;
         public Vector3 ct;
         public int[] Extra;
-        public string Name;
 
         public SklBoneData0(BinaryReader reader)
         {
@@ -43,17 +27,17 @@ namespace Assets.Sources
             this.TwoPointOne = reader.ReadSingle();
 
             this.Position = new Vector3(
-                reader.ReadSingle(),  
-                reader.ReadSingle(), 
+                reader.ReadSingle(),
+                reader.ReadSingle(),
                 -reader.ReadSingle());
 
             this.Scale = new Vector3(
-                reader.ReadSingle(), 
+                reader.ReadSingle(),
                 reader.ReadSingle(),
                 reader.ReadSingle());
 
             this.Quaternion = new Quaternion(
-                reader.ReadSingle(), 
+                reader.ReadSingle(),
                 reader.ReadSingle(),
                 -reader.ReadSingle(),
                 -reader.ReadSingle());
@@ -64,15 +48,13 @@ namespace Assets.Sources
             for (int i = 0; i < 8; i++)
             {
                 this.Extra[i] = reader.ReadInt32();
-            } 
+            }
         }
 
     }
 
-    public class SklData0
+    public class SklData0 : SklBaseData
     {
-        public SklBoneData0[] Bones;
-        public SklHeader header;
         public int bonesStart;
         public int animationStart;
         public int boneIndicesStart;
@@ -80,12 +62,10 @@ namespace Assets.Sources
         public int halfayBetweenBoneindicesAndStrings;
         public int boneNamesStart;
 
-        public SklBoneExtra0[] BoneExtra;
-        public List<string> BoneNames = new List<string>();
 
         public SklData0(SklHeader header, BinaryReader reader)
+            : base(header, reader)
         {
-            this.header = header;
             int un = reader.ReadInt16();
             int boneCount = reader.ReadInt16();
             int boneIndexCount = reader.ReadInt32();
@@ -104,13 +84,12 @@ namespace Assets.Sources
                 Bones[i] = new SklBoneData0(reader);
             }
 
-            this.BoneExtra = new SklBoneExtra0[boneCount];
+            this.BoneExtra = new SklBoneExtra[boneCount];
 
             for (int i = 0; i < boneCount; i++)
             {
-                this.BoneExtra[i] = new SklBoneExtra0(reader);
+                this.BoneExtra[i] = new SklBoneExtra(reader);
             }
-
 
             reader.BaseStream.Seek(boneNamesStart, SeekOrigin.Begin);
 

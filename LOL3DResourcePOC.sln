@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2017
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LOL3DResourcePOC", "LOL3DResourcePOC.csproj", "{41BF6C24-F283-6303-0B6B-E3A055E18613}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LOL3DResourcePOC.Editor", "LOL3DResourcePOC.Editor.csproj", "{093F5DBE-0393-22A0-0DDA-141C64675580}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{41BF6C24-F283-6303-0B6B-E3A055E18613}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41BF6C24-F283-6303-0B6B-E3A055E18613}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41BF6C24-F283-6303-0B6B-E3A055E18613}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41BF6C24-F283-6303-0B6B-E3A055E18613}.Release|Any CPU.Build.0 = Release|Any CPU
+		{093F5DBE-0393-22A0-0DDA-141C64675580}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{093F5DBE-0393-22A0-0DDA-141C64675580}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{093F5DBE-0393-22A0-0DDA-141C64675580}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{093F5DBE-0393-22A0-0DDA-141C64675580}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
